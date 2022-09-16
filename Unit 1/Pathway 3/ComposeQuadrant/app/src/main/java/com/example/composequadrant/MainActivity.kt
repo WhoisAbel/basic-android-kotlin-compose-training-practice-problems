@@ -20,12 +20,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -45,10 +40,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeQuadrantTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     ComposeQuadrantApp()
                 }
+
+
             }
         }
     }
@@ -59,31 +55,35 @@ fun ComposeQuadrantApp() {
     Column(Modifier.fillMaxWidth()) {
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
-                title = stringResource(R.string.first_title),
-                description = stringResource(R.string.first_description),
-                backgroundColor = Color.Green,
+                title = stringResource(id = R.string.first_title),
+                description = stringResource(id = R.string.first_description),
+                backgroundColor = Color.Red,
                 modifier = Modifier.weight(1f)
             )
             ComposableInfoCard(
-                title = stringResource(R.string.second_title),
-                description = stringResource(R.string.second_description),
-                backgroundColor = Color.Yellow,
+                title = stringResource(id = R.string.second_title),
+                description = stringResource(id = R.string.second_description),
+                backgroundColor = Color.Blue,
                 modifier = Modifier.weight(1f)
             )
+
         }
+
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
-                title = stringResource(R.string.third_title),
-                description = stringResource(R.string.third_description),
+                title = stringResource(id = R.string.third_title),
+                description = stringResource(id = R.string.third_description),
                 backgroundColor = Color.Cyan,
                 modifier = Modifier.weight(1f)
             )
             ComposableInfoCard(
-                title = stringResource(R.string.fourth_title),
-                description = stringResource(R.string.fourth_description),
+                title = stringResource(id = R.string.fourth_title),
+                description = stringResource(id = R.string.fourth_description),
                 backgroundColor = Color.LightGray,
                 modifier = Modifier.weight(1f)
             )
+
+
         }
     }
 }
@@ -101,13 +101,15 @@ private fun ComposableInfoCard(
             .background(backgroundColor)
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
+
         Text(
             text = title,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
         )
+
         Text(
             text = description,
             textAlign = TextAlign.Justify
